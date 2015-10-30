@@ -40,9 +40,10 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'joonty/vim-phpqa'
 "Plugin 'joonty/vdebug'
 Plugin 'mattn/emmet-vim'
-Plugin 'groenewege/vim-less'
+"Plugin 'groenewege/vim-less'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'wincent/ferret'
+"Plugin 'wincent/ferret'
+Plugin 'rking/ag.vim'
 Plugin 'wincent/terminus'
 "Plugin 'wookiehangover/jshint.vim'
 Plugin 'tpope/vim-repeat'
@@ -163,6 +164,8 @@ else
 endif
 
 set statusline=%<%f%m%r%y%{&ff}%=Char:\ %b\ 0x%B\ Line:\ %l/%L,\ Column:\ %c%V\ %P
+
+set backupdir=~/.config/nvim/backup/
 
 """"" Folding
 set foldmethod=indent " By default, use indent to determine folds

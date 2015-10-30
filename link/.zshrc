@@ -64,7 +64,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/bin:/opt/X11/bin:/usr/texbin:/usr/local/share/npm/bin
 #export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 
+. /usr/share/autojump/autojump.sh
+
 export github_user="redclov3r"
+
 
 # Where the magic happens.
 export DOTFILES=~/.dotfiles
