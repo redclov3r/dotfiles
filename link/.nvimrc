@@ -224,9 +224,9 @@ let g:ultisnips_author="Philipp Kreutzer <kreutzer@bucs-it.de>"
 """"""""""""""""""""""""""""""""
 " YCM
 
+""""""""""""""""""""""""""""""""
+" neocomplete
 if exists('g:neocomplete#enable_at_startup')
-    """"""""""""""""""""""""""""""""
-    " neocomplete
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     let g:neocomplete#enable_at_startup = 1

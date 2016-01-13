@@ -9,6 +9,18 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="dstufft"
 #ZSH_THEME="redclover"
 
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    unset timer
+  fi
+}
+
 #multibyte character support
 setopt COMBINING_CHARS 
 
@@ -56,7 +68,13 @@ zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery colored-man git git-flow osx python django fabric vundle websearch zsh-syntax-highlighting)
+plugins=(battery colored-man git git-flow osx python django fabric vundle websearch zsh-syntax-highlighting vi-mode)
+
+# Some legacy bindings for vi mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 
 source $ZSH/oh-my-zsh.sh
 
@@ -65,7 +83,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/bi
 #export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:$PATH
 
-. /usr/share/autojump/autojump.sh
+if [[ -f /usr/share/autojump/autojump.zsh ]]; then
+    . /usr/share/autojump/autojump.zsh
+fi
 
 export github_user="redclov3r"
 
