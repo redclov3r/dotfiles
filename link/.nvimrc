@@ -325,6 +325,20 @@ set laststatus=2
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 
+
+""""""""""""""""""""""""""""""""
+" Tex / Surround
+augroup latexSurround
+    autocmd!
+    autocmd FileType tex call s:latexSurround()
+augroup END
+
+function! s:latexSurround()
+    let b:surround_{char2nr("e")}
+                \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+    let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
+endfunction
+
 """"""""""""""""""""""""""""""""
 " Emmet
 "inoremap <C-M> <C-Y>,
