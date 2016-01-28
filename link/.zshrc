@@ -68,7 +68,6 @@ source $ZSH/oh-my-zsh.sh
 alias gs="git status"
 unalias gf
 alias gf="git flow"
-alias gco="git commit"
 alias dj="python manage.py"
 
 # Global aliases
