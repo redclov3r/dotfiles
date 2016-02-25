@@ -319,7 +319,7 @@ let g:xmledit_enable_html = 1
 """"""""""""""""""""""""""""""""
 " Airline
 "let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='light'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v 0x%B' 
