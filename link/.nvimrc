@@ -74,6 +74,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'php.vim'
 Plugin 'ashisha/image.vim'
+Plugin 'reedes/vim-pencil'
 "Plugin 'FuzzyFinder'
 " non-GitHub repos
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -207,6 +208,7 @@ let g:ctrlp_custom_ignore = {
             \ 'dir': '\v(node_modules|vendor|build|dist)',
             \ }
 let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 """"""""""""""""""""""""""""""""
 " phpqa
@@ -323,6 +325,7 @@ let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v 0x%B' 
+let g:airline_section_x = '%{PencilMode()}'
 set laststatus=2
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
@@ -352,6 +355,13 @@ endfunction
 " Ferret
 let &grepprg = 'ag --column --nocolor --nogroup'
 
+
+""""""""""""""""""""""""""""""""
+" vimtex
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_view_general_options_latexmk = '-r 1'
+
 """"""""""""""""""""""""""""""""
 " PIV
 let g:DisableAutoPHPFolding = 1
@@ -362,7 +372,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
