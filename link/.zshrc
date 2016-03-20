@@ -87,6 +87,9 @@ export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:$PATH
 if [[ -f /usr/share/autojump/autojump.zsh ]]; then
     . /usr/share/autojump/autojump.zsh
 fi
+if [[ -f /usr/local/etc/profile.d/autojump.sh ]]; then
+    . /usr/local/etc/profile.d/autojump.sh
+fi
 
 export github_user="redclov3r"
 
