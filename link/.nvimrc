@@ -191,9 +191,10 @@ nnoremap <C-l> :bn<CR>
 nnoremap <C-h> :bp<CR>
 
 " Shortcuts
-noremap <F9> :NERDTreeToggle<CR>
+noremap <leader>m :NERDTreeToggle<CR>
 nnoremap <C-j><C-l> :LustyJuggler<CR>
-nmap <F10> :TagbarToggle<CR>
+nmap <leader>n :TagbarToggle<CR>
+nmap <leader>c :BD<CR>
 
 " Recognize markdown files
 autocmd BufNewFile,BufRead *.md set filetype=markdown
@@ -315,6 +316,18 @@ endif
 " deoplete
 "
 let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+    return deoplete#mappings#close_popup() . "\<CR>"
+endfunction
 
 """"""""""""""""""""""""""""""""
 " XML Edit
@@ -353,6 +366,10 @@ endfunction
 """"""""""""""""""""""""""""""""
 " Emmet
 "inoremap <C-M> <C-Y>,
+
+""""""""""""""""""""""""""""""""
+" easytags
+let g:easytags_async = 1
 
 """"""""""""""""""""""""""""""""
 " Ferret
