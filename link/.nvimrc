@@ -211,7 +211,7 @@ let g:ctrlp_custom_ignore = {
             \ 'dir': '\v(node_modules|vendor|build|dist)',
             \ }
 let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -type f']
 
 """"""""""""""""""""""""""""""""
 " phpqa
@@ -223,7 +223,7 @@ let g:phpqa_codesniffer_autorun = 0
 """"""""""""""""""""""""""""""""
 " ultisnips
 let g:UltiSnipsListSnippets="<C-Tab>"
-let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsExpandTrigger="<NUL>" " AKA C-Space
 let g:ultisnips_author="Philipp Kreutzer <kreutzer@bucs-it.de>"
 
 
@@ -322,6 +322,8 @@ let g:deoplete#enable_smart_case = 1
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+
+inoremap <expr><Tab>  deoplete#mappings#close_popup()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
