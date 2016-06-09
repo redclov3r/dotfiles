@@ -191,8 +191,9 @@ nnoremap <C-l> :bn<CR>
 nnoremap <C-h> :bp<CR>
 
 " Shortcuts
-noremap <leader>m :NERDTreeToggle<CR>
 nnoremap <C-j><C-l> :LustyJuggler<CR>
+noremap <leader>m :NERDTreeToggle<CR>
+noremap <leader>c :NERDTreeFind<CR>
 nmap <leader>n :TagbarToggle<CR>
 nmap <leader>c :BD<CR>
 
