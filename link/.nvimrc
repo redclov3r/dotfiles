@@ -70,7 +70,7 @@ Plugin 'sickill/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'morhetz/gruvbox'
-Plugin 'Bogdanp/github.vim'
+"Plugin 'Bogdanp/github.vim'
 " vim-scripts repos
 Plugin 'L9'
 Plugin 'jelera/vim-javascript-syntax'
@@ -196,8 +196,8 @@ nnoremap <C-h> :bp<CR>
 " Shortcuts
 nnoremap <C-j><C-l> :LustyJuggler<CR>
 noremap <leader>m :NERDTreeToggle<CR>
-noremap <leader>c :NERDTreeFind<CR>
-nmap <leader>n :TagbarToggle<CR>
+noremap <leader>n :NERDTreeFind<CR>
+nmap <leader>t :TagbarToggle<CR>
 nmap <leader>c :BD<CR>
 
 " Recognize markdown files
