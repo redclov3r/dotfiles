@@ -335,22 +335,22 @@ let g:deoplete#enable_smart_case = 1
 " 2. Otherwise, if within a snippet, jump to next input
 " 3. Otherwise, if preceding chars are whitespace, insert tab char
 " 4. Otherwise, start manual autocomplete
-"imap <silent><expr><Tab> pumvisible() ? "\<C-n>"
-"    \ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-"    \ : (<SID>is_whitespace() ? "\<Tab>"
-"    \ : deoplete#mappings#manual_complete()))
+imap <silent><expr><Tab> pumvisible() ? "\<C-n>"
+    \ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
+    \ : (<SID>is_whitespace() ? "\<Tab>"
+    \ : deoplete#mappings#manual_complete()))
 
-"smap <silent><expr><Tab> pumvisible() ? "\<C-n>"
-"    \ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-"    \ : (<SID>is_whitespace() ? "\<Tab>"
-"    \ : deoplete#mappings#manual_complete()))
+smap <silent><expr><Tab> pumvisible() ? "\<C-n>"
+    \ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
+    \ : (<SID>is_whitespace() ? "\<Tab>"
+    \ : deoplete#mappings#manual_complete()))
 
-"inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"function! s:is_whitespace() "{{{
-"    let col = col('.') - 1
-"    return ! col || getline('.')[col - 1] =~? '\s'
-"endfunction "}}}
+function! s:is_whitespace() "{{{
+    let col = col('.') - 1
+    return ! col || getline('.')[col - 1] =~? '\s'
+endfunction "}}}
 
 """"""""""""""""""""""""""""""""
 " XML Edit
