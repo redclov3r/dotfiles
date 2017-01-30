@@ -69,6 +69,7 @@ alias gs="git status"
 unalias gf
 alias gf="git flow"
 alias dj="python manage.py"
+alias dockenv="eval \"$(docker-machine env default)\""
 
 # Global aliases
 alias -g J='| python -m json.tool'

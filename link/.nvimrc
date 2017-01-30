@@ -227,7 +227,8 @@ let g:phpqa_codesniffer_autorun = 0
 """"""""""""""""""""""""""""""""
 " ultisnips
 let g:UltiSnipsListSnippets='<C-S>'
-let g:UltiSnipsExpandTrigger='<NUL>' " AKA C-Space
+"let g:UltiSnipsExpandTrigger='<NUL>' " AKA C-Space
+let g:UltiSnipsExpandTrigger='<C-U>' " AKA C-Space
 let g:ultisnips_author="Philipp Kreutzer <kreutzer@bucs-it.de>"
 
 
