@@ -36,6 +36,7 @@ Plugin 'bufkill.vim'
 Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'othree/html5.vim'
+Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'sukima/xmledit'
 Plugin 'Raimondi/delimitMate'
 Plugin 'joonty/vim-phpqa'
@@ -175,6 +176,8 @@ endif
 set statusline=%<%f%m%r%y%{&ff}%=Char:\ %b\ 0x%B\ Line:\ %l/%L,\ Column:\ %c%V\ %P
 
 set backupdir=~/.config/nvim/backup/
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 """"" Folding
 set foldmethod=indent " By default, use indent to determine folds
