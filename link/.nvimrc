@@ -36,6 +36,7 @@ Plugin 'bufkill.vim'
 Plugin 'miripiruni/CSScomb-for-Vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'othree/html5.vim'
+Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'sukima/xmledit'
 Plugin 'Raimondi/delimitMate'
 Plugin 'joonty/vim-phpqa'
@@ -176,6 +177,8 @@ set statusline=%<%f%m%r%y%{&ff}%=Char:\ %b\ 0x%B\ Line:\ %l/%L,\ Column:\ %c%V\
 
 set backupdir=~/.config/nvim/backup/
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 """"" Folding
 set foldmethod=indent " By default, use indent to determine folds
 set foldlevelstart=99 " All folds open by default
@@ -227,7 +230,8 @@ let g:phpqa_codesniffer_autorun = 0
 """"""""""""""""""""""""""""""""
 " ultisnips
 let g:UltiSnipsListSnippets='<C-S>'
-let g:UltiSnipsExpandTrigger='<NUL>' " AKA C-Space
+"let g:UltiSnipsExpandTrigger='<NUL>' " AKA C-Space
+let g:UltiSnipsExpandTrigger='<C-U>' " AKA C-Space
 let g:ultisnips_author="Philipp Kreutzer <kreutzer@bucs-it.de>"
 
 
