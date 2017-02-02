@@ -52,7 +52,7 @@ zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery colored-man git git-flow osx python django fabric vundle websearch zsh-syntax-highlighting)
+plugins=(battery colored-man git git-flow osx python django fabric vundle websearch zsh-syntax-highlighting yarn)
 
 # Some legacy bindings for vi mode
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -92,6 +92,10 @@ if [[ -f /usr/local/etc/profile.d/autojump.sh ]]; then
 fi
 
 export github_user="redclov3r"
+
+if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
 
 
 # Where the magic happens.
