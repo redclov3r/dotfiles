@@ -71,6 +71,7 @@ Plugin 'sickill/vim-monokai'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'morhetz/gruvbox'
+Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'Bogdanp/github.vim'
 " vim-scripts repos
 Plugin 'L9'
