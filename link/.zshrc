@@ -55,7 +55,7 @@ WORKON_HOME="~/.virtualenvs"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery colored-man git git-flow osx python django fabric vundle virtualenvwrapper websearch zsh-syntax-highlighting yarn)
+plugins=(battery colored-man git git-flow gitignore osx python django fabric vundle virtualenvwrapper websearch zsh-syntax-highlighting yarn)
 
 # Some legacy bindings for vi mode
 bindkey -M vicmd '?' history-incremental-search-backward

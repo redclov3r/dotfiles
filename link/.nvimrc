@@ -57,6 +57,7 @@ Plugin 'wincent/terminus'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'fholgado/minibufexpl.vim'
@@ -378,6 +379,7 @@ set laststatus=2
 "let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#vimtex#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
@@ -394,6 +396,34 @@ function! s:latexSurround()
                 \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
     let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
 endfunction
+
+let g:tex_flavor = "latex"
+
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+function! g:DisableWritingMode()
+    "PencilOff
+    Goyo!
+    colorscheme gruvbox
+    set background=dark
+    set nospell
+    set spelllang=en
+endfunction
+
+function! g:EnableWritingMode()
+    Goyo
+    "PencilSoft
+    colorscheme pencil
+    set background=light
+    set spelllang=de
+    set spell
+endfunction
+
+noremap <leader>w :call g:EnableWritingMode()<CR>
+noremap <leader>q :call g:DisableWritingMode()<CR>
 
 """"""""""""""""""""""""""""""""
 " Emmet
