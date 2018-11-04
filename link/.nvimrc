@@ -62,7 +62,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 " Plugin 'fholgado/minibufexpl.vim'
 Plugin 'bling/vim-bufferline'
-"Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 "Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-session'
@@ -81,7 +81,7 @@ Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'javascript.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'php.vim'
-Plugin 'ashisha/image.vim'
+"Plugin 'ashisha/image.vim'
 Plugin 'reedes/vim-pencil'
 Plugin 'reedes/vim-colors-pencil'
 "Plugin 'FuzzyFinder'
@@ -443,6 +443,17 @@ let &grepprg = 'ag --column --nocolor --nogroup'
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_view_general_options_latexmk = '-r 1'
+let g:vimtex_latexmk_options = '-pdf -shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+\}
 
 """"""""""""""""""""""""""""""""
 " PIV

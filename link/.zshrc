@@ -86,7 +86,7 @@ hash -d uni="/Users/redclover/Documents/Uni/Semester/Sommer 15/"
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/bin:/opt/X11/bin:/usr/texbin:/usr/local/share/npm/bin
 #export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
-export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:$PATH
+export PATH=/usr/local/texlive/2018/bin/x86_64-darwin:$PATH
 
 if [[ -f /usr/share/autojump/autojump.zsh ]]; then
     . /usr/share/autojump/autojump.zsh
