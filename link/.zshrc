@@ -39,6 +39,7 @@ pyp() {
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
+[[ -f "$HOME/.dircolors" ]] && eval "$(dircolors -b $HOME/.dircolors)" 
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
