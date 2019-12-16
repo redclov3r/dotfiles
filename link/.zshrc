@@ -55,7 +55,7 @@ WORKON_HOME="~/.virtualenvs"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery colored-man git git-flow gitignore osx python django fabric vundle websearch zsh-syntax-highlighting yarn)
+plugins=(battery colored-man-pages git git-flow gitignore osx python django fabric vundle web-search yarn)
 
 # Some legacy bindings for vi mode
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -108,6 +108,8 @@ export DOTFILES=~/.dotfiles
 # Add binaries into the path
 PATH=$DOTFILES/bin:$PATH
 export PATH
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source all files in "source"
 function src() {
