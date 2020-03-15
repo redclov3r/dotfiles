@@ -56,7 +56,7 @@ WORKON_HOME="~/.virtualenvs"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery colored-man-pages git git-flow gitignore osx python django fabric vundle web-search yarn)
+plugins=(battery colored-man-pages git git-flow gitignore osx python django fabric vundle web-search yarn symfony2)
 
 # Some legacy bindings for vi mode
 bindkey -M vicmd '?' history-incremental-search-backward
@@ -134,3 +134,5 @@ src
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
