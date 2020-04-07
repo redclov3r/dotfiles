@@ -1,104 +1,50 @@
-set fileencodings=utf-8
-set encoding=utf-8
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neovim configuration
+"
+" for old full configuration as reference see
+" https://github.com/redclov3r/dotfiles/blob/23c24f1099c85fa94a36dffbbea0dfa7ca773e24/link/.nvimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set noswapfile
-
-set nocompatible              " be iMproved
-
+" vim-plug for plugins
 call plug#begin("~/.nvim/bundle")
 
-" My bundles here:
-"
-" original repos on GitHub
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/neocomplete.vim'
-"Plug 'Shougo/deoplete.nvim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'bling/vim-airline'
+" General
+Plug 'tpope/vim-sensible'
+
+" Aesthetics
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rstacruz/sparkup', {'rtp': 'vim'}
-"Plug 'sjbach/lusty'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
-Plug 'scrooloose/nerdcommenter'
+Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
+
+" Version Control
+Plug 'tpope/vim-fugitive'
+
+" Filesystem
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'vim-scripts/bufkill.vim'
-Plug 'miripiruni/CSScomb-for-Vim'
-Plug 'kien/ctrlp.vim'
-Plug 'othree/html5.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'sukima/xmledit'
-Plug 'Raimondi/delimitMate'
-Plug 'joonty/vim-phpqa'
-Plug 'lvht/phpcd.vim'
-Plug 'nelsyeung/twig.vim'
-Plug 'lervag/vimtex'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-"Plug 'joonty/vdebug'
-Plug 'mattn/emmet-vim'
-"Plug 'groenewege/vim-less'
-Plug 'editorconfig/editorconfig-vim'
-"Plug 'wincent/ferret'
-Plug 'rking/ag.vim'
-Plug 'wincent/terminus'
-"Plug 'wookiehangover/jshint.vim'
-Plug 'tpope/vim-repeat'
+Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Editing - General
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-Plug 'Chiel92/vim-autoformat'
-Plug 'tomtom/tlib_vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'fholgado/minibufexpl.vim'
-Plug 'bling/vim-bufferline'
-Plug 'majutsushi/tagbar'
-Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-session'
-" Plug 'spf13/PIV' " PHP in VIM
-" Colorschemes
-Plug 'nanotech/jellybeans.vim'
-Plug 'sickill/vim-monokai'
-Plug 'altercation/vim-colors-solarized'
-Plug 'Lokaltog/vim-distinguished'
-Plug 'morhetz/gruvbox'
-Plug 'mustache/vim-mustache-handlebars'
-"Plug 'Bogdanp/github.vim'
-" vim-scripts repos
-Plug 'vim-scripts/L9'
-Plug 'jelera/vim-javascript-syntax'
-"Plug 'vim-scripts/javascript.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'vim-scripts/php.vim'
-"Plug 'ashisha/image.vim'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-colors-pencil'
-"Plug 'FuzzyFinder'
-" non-GitHub repos
-"Plug 'git://git.wincent.com/command-t.git'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'dense-analysis/ale'
+
+" Editing - Filetypes
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
-"Allow unsaved Files
 set hidden
 
-" change the mapleader to ,
-let mapleader=","
-let maplocalleader=";"
+" Enable Mouse support
+set mouse=a
 
-" make :W map to :w
-:command! W w
-
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+" colors
+colorscheme gruvbox
 
 " Basic editing settings
 set tabstop=4     " a tab is four spaces
@@ -126,239 +72,49 @@ set incsearch     " show search matches as you type
 set expandtab     " spaces instead of tabs
 filetype plugin indent on     " required!
 
-set visualbell
 
-if has("gui_running")
-endif
+" change the mapleader to ,
+let mapleader=","
+let maplocalleader=";"
 
-" Autoload the plugin files for filetypes
-filetype plugin on
+" make :W map to :w
+:command! W w
 
-if has("gui_running")
-    syntax enable
-    if has("gui_gtk2")
-        set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 9
-        "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
-        set lines=50 columns=200 
-    elseif has("gui_macvim")
-        set guifont=Source\ Code\ Pro:h11
-    elseif has("gui_win32")
-        set guifont=Consolas:h11
-        set lines=50 columns=200 
-        "set guifont=SourceCodePro:h10:cANSI
-    endif
-    " set t_Co=256
-    set hlsearch " Highlight
-    set clipboard=autoselect " 
-    set guioptions-=T
-    " set guifont=Consolas:h10
-    set nu
-    set background=dark
-    "colorscheme wombat "or blackboard
-    "colorscheme desertEx
-    " standard color scheme
-    "colorscheme monokai
-    "colorscheme distinguished
-    "colorscheme solarized
-    colorscheme gruvbox
-    "colorscheme jellybeans
-    " filetype dependent colors (which don't seem to work...)
-    " au BufEnter,Filetype python colorscheme desertEx
-    " au BufEnter,Filetype javascript colorscheme molokai
-    " au BufEnter,Filetype css,scss colorscheme wombat
-    " au BufEnter,Filetype html colorscheme wombat
-else
-    syntax enable
-    set hlsearch " Highlight
-    set background=dark
-    colorscheme gruvbox
-endif
-
-set statusline=%<%f%m%r%y%{&ff}%=Char:\ %b\ 0x%B\ Line:\ %l/%L,\ Column:\ %c%V\ %P
-
-set backupdir=~/.config/nvim/backup/
-
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-""""" Folding
-set foldmethod=indent " By default, use indent to determine folds
-set foldlevelstart=99 " All folds open by default
-
-" <space> toggles folds opened and closed
-nnoremap <space> za
-
-" <space> in visual mode creates a fold over the marked range
-vnoremap <space> zf
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " work more logically with wrapped lines
 noremap j gj
 noremap k gk
 
+" Navigate in Buffers
 nnoremap <C-l> :bn<CR>
 nnoremap <C-h> :bp<CR>
 
-" Shortcuts
-nnoremap <C-j><C-l> :LustyJuggler<CR>
+" Plugin Shortcuts
 noremap <leader>m :NERDTreeToggle<CR>
 noremap <leader>n :NERDTreeFind<CR>
-nmap <leader>t :TagbarToggle<CR>
-nmap <leader>c :BD<CR>
+nmap <C-p> :Files<CR>
 
-" Recognize markdown files
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-
-"remap escape for terminal
-tnoremap <Esc> <C-\><C-n>
-
-" PLUGINS
+" Plugin configuration
 
 """"""""""""""""""""""""""""""""
-" ctrlp
-
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v(node_modules|vendor|build|dist)',
-            \ }
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_user_command = ['.git', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'find %s -type f']
-
-""""""""""""""""""""""""""""""""
-" phpqa
-let g:phpqa_messdetector_autorun = 0
-let g:phpqa_codesniffer_autorun = 0
-"let g:phpqa_codesniffer_args = "--standard=WordPress"
-
-"
-""""""""""""""""""""""""""""""""
-" ultisnips
-let g:UltiSnipsListSnippets='<C-S>'
-"let g:UltiSnipsExpandTrigger='<NUL>' " AKA C-Space
-let g:UltiSnipsExpandTrigger='<C-U>' " AKA C-Space
-let g:ultisnips_author="Philipp Kreutzer <kreutzer@bucs-it.de>"
-
-
-""""""""""""""""""""""""""""""""
-" YCM
-
-""""""""""""""""""""""""""""""""
-" neocomplete
-if exists('g:neocomplete#enable_at_startup')
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#sources#syntax#min_keyword_length = 2
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-    " Define dictionary.
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \ 'default' : '',
-                \ 'vimshell' : $HOME.'/.vimshell_hist',
-                \ 'scheme' : $HOME.'/.gosh_completions'
-                \ }
-
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    "function! s:my_cr_function()
-    "  return neocomplete#close_popup() . "\<CR>"
-    "  " For no inserting <CR> key.
-    "  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    "endfunction
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
-    " Close popup by <Space>.
-    "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-    inoremap <expr><CR> pumvisible() ? neocomplete#close_popup() : "\<CR>"
-
-    " For cursor moving in insert mode(Not recommended)
-    "inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-    "inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-    "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-    "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-    " Or set this.
-    "let g:neocomplete#enable_cursor_hold_i = 1
-    " Or set this.
-    "let g:neocomplete#enable_insert_char_pre = 1
-
-    " AutoComplPop like behavior.
-    "let g:neocomplete#enable_auto_select = 1
-
-    " Shell like behavior(not recommended).
-    "set completeopt+=longest
-    "let g:neocomplete#enable_auto_select = 1
-    "let g:neocomplete#disable_auto_complete = 1
-    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-    "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-endif
-
-
-""""""""""""""""""""""""""""""""
-" deoplete
-"
-let g:deoplete#enable_at_startup = 1
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
-
-" Taken from: https://github.com/rafi/vim-config/blob/master/config/plugins/deoplete.vim
-" <CR>: If popup menu visible, expand snippet or close popup with selection,
-"       Otherwise, check if within empty pair and use delimitMate.
-"imap <silent><expr><CR> pumvisible() ?
-"    \ (neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : deoplete#mappings#close_popup())
-"        \ : (delimitMate#WithinEmptyPair() ? "\<Plug>delimitMateCR" : "\<CR>")
-
-" <Tab> completion:
-" 1. If popup menu is visible, select and insert next item
-" 2. Otherwise, if within a snippet, jump to next input
-" 3. Otherwise, if preceding chars are whitespace, insert tab char
-" 4. Otherwise, start manual autocomplete
-"imap <silent><expr><Tab> pumvisible() ? "\<C-n>"
-    "\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-    "\ : (<SID>is_whitespace() ? "\<Tab>"
-    "\ : deoplete#mappings#manual_complete()))
-
-"smap <silent><expr><Tab> pumvisible() ? "\<C-n>"
-    "\ : (neosnippet#jumpable() ? "\<Plug>(neosnippet_jump)"
-    "\ : (<SID>is_whitespace() ? "\<Tab>"
-    "\ : deoplete#mappings#manual_complete()))
-
-"inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"function! s:is_whitespace() "{{{
-    "let col = col('.') - 1
-    "return ! col || getline('.')[col - 1] =~? '\s'
-"endfunction "}}}
-
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
+let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v 0x%B' 
+"let g:airline_section_x = '%{PencilMode()}'
+let g:airline_section_c = ''
+set laststatus=2
+"let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#vimtex#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 """"""""""""""""""""""""""""""""
 " COC
@@ -386,12 +142,12 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-if has('patch-8.1.1068')
+" if has('patch-8.1.1068')
   " Use `complete_info` if your (Neo)Vim version supports it.
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" else
+  " imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -486,115 +242,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-""""""""""""""""""""""""""""""""
-" XML Edit
-let g:xmledit_enable_html = 1
-
-""""""""""""""""""""""""""""""""
-" Airline
-"let g:airline_powerline_fonts = 1
-let g:airline_theme='simple'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v 0x%B' 
-"let g:airline_section_x = '%{PencilMode()}'
-let g:airline_section_c = ''
-set laststatus=2
-"let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#vimtex#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
-
-""""""""""""""""""""""""""""""""
-" Tex / Surround
-augroup latexSurround
-    autocmd!
-    autocmd FileType tex call s:latexSurround()
-augroup END
-
-function! s:latexSurround()
-    let b:surround_{char2nr("e")}
-                \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
-    let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
-endfunction
-
-let g:tex_flavor = "latex"
-
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
-function! g:DisableWritingMode()
-    "PencilOff
-    Goyo!
-    colorscheme gruvbox
-    set background=dark
-    set nospell
-    set spelllang=en
-endfunction
-
-function! g:EnableWritingMode()
-    Goyo
-    "PencilSoft
-    colorscheme pencil
-    set background=light
-    set spelllang=de
-    set spell
-endfunction
-
-noremap <leader>w :call g:EnableWritingMode()<CR>
-noremap <leader>q :call g:DisableWritingMode()<CR>
-
-""""""""""""""""""""""""""""""""
-" Emmet
-"inoremap <leader>e <C-Y>,
-
-""""""""""""""""""""""""""""""""
-" easytags
-let g:easytags_async = 1
-
-""""""""""""""""""""""""""""""""
-" Ferret
-let &grepprg = 'ag --column --nocolor --nogroup'
-
-
-""""""""""""""""""""""""""""""""
-" vimtex
-let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-let g:vimtex_view_general_options_latexmk = '-r 1'
-let g:vimtex_latexmk_options = '-pdf -shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
-let g:vimtex_compiler_latexmk = {
-    \ 'options' : [
-    \   '-pdf',
-    \   '-shell-escape',
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-\}
-
-""""""""""""""""""""""""""""""""
-" PIV
-let g:DisableAutoPHPFolding = 1
-""""""""""""""""""""""""""""""""
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-""""""""""""""""""""""""""""""""
-" Session
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
