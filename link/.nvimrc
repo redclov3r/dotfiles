@@ -1,9 +1,20 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"====================================================================================================
 " neovim configuration
 "
 " for old full configuration as reference see
 " https://github.com/redclov3r/dotfiles/blob/23c24f1099c85fa94a36dffbbea0dfa7ca773e24/link/.nvimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Contents:
+" 1. Plugins
+" 2. General_Settings
+" 3. Keymappings
+" 4. Plugin_Settings
+"
+"====================================================================================================
+
+"====================================================================================================
+" # Plugins
+"====================================================================================================
 
 " vim-plug for plugins
 call plug#begin("~/.nvim/bundle")
@@ -16,6 +27,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-startify'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
@@ -30,6 +42,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'vim-scripts/bufkill.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'dense-analysis/ale'
 
@@ -38,7 +51,12 @@ Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
-set hidden
+"====================================================================================================
+" # General_Settings
+"====================================================================================================
+
+" allow unsaved files
+set hidden 
 
 " Enable Mouse support
 set mouse=a
@@ -49,7 +67,7 @@ colorscheme gruvbox
 " Basic editing settings
 set tabstop=4     " a tab is four spaces
 set softtabstop=4 " 4 spaces as a tab for bs/del
-set backspace=2 " Backspace over anything! (Super backspace!)
+set backspace=2   " Backspace over anything! (Super backspace!)
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 set cindent       " apply the C indenting rules
@@ -60,8 +78,6 @@ set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set matchtime=2   " For .2 seconds
-" set matchpairs+=<:> 
-                  " specially for html
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
                   "    case-sensitive otherwise
@@ -72,6 +88,10 @@ set incsearch     " show search matches as you type
 set expandtab     " spaces instead of tabs
 filetype plugin indent on     " required!
 
+
+"====================================================================================================
+" # Keymappings
+"====================================================================================================
 
 " change the mapleader to ,
 let mapleader=","
@@ -92,33 +112,35 @@ noremap k gk
 nnoremap <C-l> :bn<CR>
 nnoremap <C-h> :bp<CR>
 
+"----------------------------------------------------------------------------------------------------
 " Plugin Shortcuts
+"----------------------------------------------------------------------------------------------------
 noremap <leader>m :NERDTreeToggle<CR>
 noremap <leader>n :NERDTreeFind<CR>
-nmap <C-p> :Files<CR>
+nmap <C-p> :GFiles<CR>
 
-" Plugin configuration
 
-""""""""""""""""""""""""""""""""
+"====================================================================================================
+" # Plugin_Settings
+"====================================================================================================
+
+
+"----------------------------------------------------------------------------------------------------
 " Airline
+"----------------------------------------------------------------------------------------------------
+
+set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
 let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#:%3v 0x%B' 
-"let g:airline_section_x = '%{PencilMode()}'
-let g:airline_section_c = ''
-set laststatus=2
-"let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#vimtex#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-""""""""""""""""""""""""""""""""
-" COC
-""""""""""""""""""""""""""""""""
+"----------------------------------------------------------------------------------------------------
+" coc
+"----------------------------------------------------------------------------------------------------
+
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
@@ -142,6 +164,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
+"
+" *Note*: patch detection did not work properly. This is why the whole `if`
+" construct is commented
+
 " if has('patch-8.1.1068')
   " Use `complete_info` if your (Neo)Vim version supports it.
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -242,3 +268,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+let g:coc_filetype_map = {
+\ 'html.twig': 'html',
+\ }
