@@ -39,7 +39,7 @@ pyp() {
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
-[[ -f "$HOME/.dircolors" ]] && eval "$(dircolors -b $HOME/.dircolors)" 
+[[ -f "$HOME/.dircolors" ]] && command -v dircolors && eval "$(dircolors -b $HOME/.dircolors)" 
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -115,7 +115,12 @@ export DOTFILES=~/.dotfiles
 PATH=$DOTFILES/bin:$PATH
 export PATH
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+if [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # Source all files in "source"
 function src() {
