@@ -102,6 +102,11 @@ if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
+if [[ -f /usr/local/bin/nvim ]]; then
+    export VISUAL="/usr/local/bin/nvim"
+    export EDITOR="$VISUAL"
+fi
+
 
 # Where the magic happens.
 export DOTFILES=~/.dotfiles
