@@ -16,6 +16,9 @@
 /link/.rbenv/versions/
 /link/.rbenv/version
 
+# Don't commit fish prompt as it is handled by omf
+/config/fish/functions/fish_prompt.fish
+
 # Ignore any file with LOCAL in the name (good for per-machine vars/functions)
 *LOCAL*
 

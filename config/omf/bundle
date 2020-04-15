@@ -1,0 +1,6 @@
+package autojump
+package git-flow
+theme bobthefish
+theme default
+theme robbyrussell
+theme spacefish

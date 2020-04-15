@@ -50,6 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Editing - Filetypes
 Plug 'sheerun/vim-polyglot'
+Plug 'dag/vim-fish'
 
 call plug#end()
 
