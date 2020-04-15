@@ -291,3 +291,14 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 let g:coc_filetype_map = {
 \ 'html.twig': 'html',
 \ }
+
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-yaml',
+\ 'coc-highlight',
+\ 'coc-angular'
+\ ]
