@@ -31,6 +31,7 @@ Plug 'mhinz/vim-startify'
 
 " Version Control
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Filesystem
 Plug 'scrooloose/nerdtree'
