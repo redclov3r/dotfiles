@@ -295,8 +295,10 @@ let g:coc_filetype_map = {
 
 let g:coc_global_extensions = [
 \ 'coc-snippets',
+\ 'coc-lists',
 \ 'coc-json',
 \ 'coc-tsserver',
+\ 'coc-eslint',
 \ 'coc-html',
 \ 'coc-css',
 \ 'coc-yaml',
