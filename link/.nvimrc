@@ -27,6 +27,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'mhinz/vim-startify'
 
 " Version Control
@@ -48,9 +49,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'dense-analysis/ale'
 
+" Editing - Writing
+Plug 'junegunn/goyo.vim'
+
 " Editing - Filetypes
 Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
+"Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 call plug#end()
 
@@ -120,7 +126,9 @@ nnoremap <C-h> :bp<CR>
 "----------------------------------------------------------------------------------------------------
 noremap <leader>m :NERDTreeToggle<CR>
 noremap <leader>n :NERDTreeFind<CR>
+noremap <leader>g :Goyo<CR>
 nmap <C-p> :GFiles<CR>
+nmap <C-t> :Files<CR>
 
 
 "====================================================================================================
@@ -303,5 +311,6 @@ let g:coc_global_extensions = [
 \ 'coc-css',
 \ 'coc-yaml',
 \ 'coc-highlight',
-\ 'coc-angular'
+\ 'coc-angular',
+\ 'coc-markdownlint'
 \ ]
