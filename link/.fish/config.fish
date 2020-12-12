@@ -20,3 +20,8 @@ set -x DOTFILES ~/.dotfiles
 
 # Add binaries into the path
 set -x PATH $DOTFILES/bin $PATH
+
+# Init Starship
+if type -q starship
+    starship init fish | source
+end
