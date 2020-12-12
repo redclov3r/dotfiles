@@ -1,6 +1,9 @@
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme gruvbox
 
+# disable greeting
+set -g fish_greeting
+
 set -g autojump_fish /usr/share/autojump/autojump.fish
 set -g autojump_fish_local /usr/local/share/autojump/autojump.fish
 
