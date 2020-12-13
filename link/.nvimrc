@@ -312,5 +312,7 @@ let g:coc_global_extensions = [
 \ 'coc-yaml',
 \ 'coc-highlight',
 \ 'coc-angular',
+\ 'coc-pyright',
+\ 'coc-phpls',
 \ 'coc-markdownlint'
 \ ]
