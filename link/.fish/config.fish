@@ -21,6 +21,18 @@ set -x DOTFILES ~/.dotfiles
 # Add binaries into the path
 set -x PATH $DOTFILES/bin $PATH
 
+
+# Init rustup
+set -l rustup_path $HOME/.cargo/bin
+
+if [ $CARGO_HOME ]
+  set rustup_path $CARGO_HOME/bin
+end
+
+contains -- $rustup_path $PATH
+  or set -gx PATH $rustup_path $PATH
+
+
 # Init Starship
 if type -q starship
     starship init fish | source

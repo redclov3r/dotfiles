@@ -57,6 +57,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
 "Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
 
@@ -314,5 +315,6 @@ let g:coc_global_extensions = [
 \ 'coc-angular',
 \ 'coc-pyright',
 \ 'coc-phpls',
+\ 'coc-rls',
 \ 'coc-markdownlint'
 \ ]
